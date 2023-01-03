@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Houses</h1>
+<h1>物件一覧</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Address</th>
-      <th>Age</th>
-      <th>Information</th>
+      <th>物件名</th>
+      <th>賃料</th>
+      <th>住所</th>
+      <th>築年数</th>
+      <th>備考</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,9 +22,9 @@
         <td><%= house.address %></td>
         <td><%= house.age %></td>
         <td><%= house.information %></td>
-        <td><%= link_to 'Show', house %></td>
-        <td><%= link_to 'Edit', edit_house_path(house) %></td>
-        <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', house %></td>
+        <td><%= link_to '編集', edit_house_path(house) %></td>
+        <td><%= link_to '削除', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New House', new_house_path %>
+<%= link_to '物件を登録する', new_house_path %>

@@ -5,22 +5,24 @@ class HousesController < ApplicationController
   end
 
   def show
-    @house = House.find(params[:id])
+    @stations = @house.stations
   end
 
   def new
     @house = House.new
+    2.times { @house.stations.build }
   end
 
   def edit
-    @house = House.find(params[:id])
-    # 2.times { @house.stations.build }
+    @house.stations.build
+    # @house = House.find(params[:id])
   end
 
   def create
     @house = House.new(house_params)
     if @house.save
       redirect_to @house, notice: "登録しました"
+      # binding.pry
     end
   end
 
@@ -35,11 +37,11 @@ class HousesController < ApplicationController
   end
 
   private
-    def set_house
-      @house = House.find(params[:id])
-    end
+  def set_house
+    @house = House.find(params[:id])
+  end
 
   def house_params
-    params.require(:house).permit(:name, :price, :address, :age, :information)
+    params.require(:house).permit(:name, :price, :address, :age, :information, stations_attributes: [:id, :line, :station, :on_foot])
   end
 end
